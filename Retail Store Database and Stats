@@ -1,0 +1,44 @@
+--Create a retail store database
+
+CREATE TABLE sunshinelines (id INTEGER Primary Key, name text, size text, color text, price INTEGER, quantity INTEGER, sales INTEGER);
+
+INSERT INTO sunshinelines VALUES
+(1,"t-shirt", "small" , "white", 25, 10,5),
+(2, "dress", "medium", "black", 45, 50,10),
+(3, "sweatshirt", "small","pink",45, 22,40),
+(4, "shirt", "medium", "blue",22, 50,50),
+(5, "hoodie", "large", "white", 50, 14,2),
+(6, "leggins", "small", "purple", 35, 4, 5),
+(7, "crop-top", "medium", "white", 15, 87,57),
+(8, "sweater", "small", "gray", 34, 100,2),
+(9, "jeans", "large", "blue", 60, 41,15),
+(10, "coat", "small", "beige", 150, 22,4),
+(11, "jacket", "medium", "red", 45, 28,5),
+(12, "pant", "small", "black", 55, 30,8),
+(13, "shorts", "medium", "white", 29, 25,6),
+(14, "swimsuit", "small", "yellow", 30, 58,17),
+(15, "skirt","medium", "blue", 28, 57,28); 
+
+--display the database ordered by price.
+SELECT * FROM sunshinelines
+ORDER BY price;
+
+--What is the average price of the crop-top items?.
+SELECT AVG(price)
+FROM sunshinelines
+WHERE name="crop-top"; 
+
+--Stock control: What is the quantity that we have per item?
+SELECT name,SUM(quantity)
+FROM sunshinelines
+GROUP BY name
+ORDER BY quantity desc;
+
+--What are the best top 5 best sellers?
+SELECT name, sales 
+FROM sunshinelines
+GROUP BY name
+ORDER BY sales desc
+limit 5;
+
+
